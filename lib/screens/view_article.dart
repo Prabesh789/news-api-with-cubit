@@ -12,6 +12,7 @@ class ViewArticle extends StatefulWidget {
 }
 
 class _ViewArticleState extends State<ViewArticle> {
+  bool _isLoading = true;
   final Completer<WebViewController> _completer =
       Completer<WebViewController>();
 
@@ -52,17 +53,31 @@ class _ViewArticleState extends State<ViewArticle> {
         centerTitle: true,
         elevation: 0.0,
       ),
-      body: Center(
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          child: WebView(
-            initialUrl: widget.articleModel.url,
-            onWebViewCreated: ((WebViewController webViewController) {
-              _completer.complete(webViewController);
-            }),
+      body: Stack(
+        children: [
+          Center(
+            child: Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: WebView(
+                initialUrl: widget.articleModel.url,
+                onWebViewCreated: ((WebViewController webViewController) {
+                  _completer.complete(webViewController);
+                }),
+                onPageFinished: (finished) {
+                  setState(() {
+                    _isLoading = false;
+                  });
+                },
+              ),
+            ),
           ),
-        ),
+          _isLoading
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : Stack(),
+        ],
       ),
     );
   }
