@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:newsapi/cubit/news_api/news_api_cubit.dart';
+import 'package:newsapi/cubits/news_api/news_api_cubit.dart';
 import 'package:newsapi/dependancy_injection/dependancy_injection.dart';
 import 'package:newsapi/screens/view_article.dart';
 import 'package:newsapi/theme/theme.dart';
