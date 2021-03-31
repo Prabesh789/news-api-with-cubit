@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:newsapi/cubit/news_api/news_api_cubit.dart';
 import 'package:newsapi/dependancy_injection/dependancy_injection.dart';
+import 'package:newsapi/screens/view_article.dart';
 import 'package:newsapi/theme/theme.dart';
 
 class ViewNews extends StatefulWidget {
@@ -55,11 +56,16 @@ class _ViewNewsState extends State<ViewNews> {
                 itemCount: state.newsModel.articles.length,
                 itemBuilder: (context, item) {
                   final data = state.newsModel.articles[item];
+
                   return Padding(
                     padding:
                         const EdgeInsets.only(left: 15, right: 15, bottom: 10),
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) =>
+                                ViewArticle(articleModel: data)));
+                      },
                       child: Container(
                         child: Column(
                           children: <Widget>[

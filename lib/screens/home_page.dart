@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:newsapi/cubit/news_api/news_api_cubit.dart';
-import 'package:newsapi/dependancy_injection/dependancy_injection.dart';
 import 'package:newsapi/screens/view_news.dart';
 import 'package:newsapi/theme/theme.dart';
 

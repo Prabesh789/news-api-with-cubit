@@ -17,4 +17,7 @@ class NewsRepositories {
       return null;
     }
   }
+  // Future<dynamic> viewNews()async{
+  //   //final response = await
+  // }
 }
